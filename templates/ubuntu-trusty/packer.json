@@ -7,9 +7,8 @@
     "tools_upload_flavor": "linux",
     "headless": false,
 
-    "iso_url": "http://releases.ubuntu.com/trusty/ubuntu-14.04.5-server-amd64.iso",
-    "iso_checksum": "dde07d37647a1d2d9247e33f14e91acb10445a97578384896b4e1d985f754cc1",
-    "iso_checksum_type": "sha256",
+    "iso_url": "https://releases.ubuntu.com/jammy/ubuntu-22.04.4-live-server-amd64.iso",
+    "iso_checksum": "sha256:45f873de9f8cb637345d6e66a583762730bbea30277ef7b32c9c3bd6700a32b2",
 
     "ssh_username": "${osUsername}",
     "ssh_password": "${osPassword}",
@@ -19,7 +18,7 @@
     "disk_size": "${vmDiskSize}",
 
     "floppy_files": [
-      "${tmpFolder}/preseed.cfg"
+      "${tmpFolder}\\preseed.cfg"
     ],
 
     "boot_command": [
@@ -44,8 +43,6 @@
     "keep_registered": true,
 
     "vmx_data": {
-      "numvcpus": "${vmCores}",
-      "memsize": "${vmRamSize}",
       "ethernet0.networkName": "${vmNetwork}"
     }
   }],
@@ -54,7 +51,7 @@
     {
       "type": "shell",
       "scripts": [
-        "${tmpFolder}/bootstrap.sh"
+        "${tmpFolder}\\bootstrap.sh"
       ],
 
       "execute_command": "echo '${osPassword}' | {{ .Vars }} sudo -E -S bash '{{ .Path }}'"
